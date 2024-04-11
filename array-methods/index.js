@@ -10,3 +10,10 @@ let evenNumbers = numbersArray.filter(i=>(
     (i%2==0)
 ))
 console.log(evenNumbers);
+
+
+let rudecerSum= numbersArray.reduce((accu,curent)=>
+accu+curent
+)
+
+console.log(rudecerSum);

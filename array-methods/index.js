@@ -5,3 +5,8 @@ let doubledArray= numbersArray.map(i=>(
 ))
 console.log(doubledArray);
 
+
+let evenNumbers = numbersArray.filter(i=>(
+    (i%2==0)
+))
+console.log(evenNumbers);

@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+}
+#inputsection{
+    width: 38%;
+    margin: auto;
+    display: flex;
+    height: 12vh;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 6%;
+}
+#inputsection input{
+    height: 100%;
+    width: 27%;
+    outline: none;
+    font-size: 1.3rem;
+}
+#inputsection button{
+    width: 12%;
+    height: 60%;
+    border: none;
+    background-color: rgb(156, 156, 253);
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+#outputsection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 20vh;
+    margin: auto;
+    margin-top: 3%;
+    justify-content:space-evenly;
+}
+#outputsection p{
+    font-size: 4rem;
+    width: 50%;
+    text-align: center;
+}

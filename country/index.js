@@ -1,7 +1,7 @@
 
 document.getElementById('select').addEventListener('change',sorting)
 let fetchedData;
-let allcountries;
+
 async function fetchData(){
     try{
      let data= await fetch('https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-countries')
@@ -37,7 +37,8 @@ function display_data_on_ui(data){
 }
 
 function sorting(e){
-    let data=fetchedData;
+    let data=[...fetchedData];
+
     if(e.target.value=='low-to-high'){
       let sorted=data.sort((a,b)=>a.population-b.population)
       display_data_on_ui(sorted)
@@ -45,6 +46,6 @@ function sorting(e){
         let sorted= data.sort((a,b)=>b.population-a.population)
         display_data_on_ui(sorted)
     }else{
-    fetchData()
+     display_data_on_ui(fetchedData)
     }
 }

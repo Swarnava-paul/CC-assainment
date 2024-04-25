@@ -1,5 +1,7 @@
 
-document.getElementById('select').addEventListener('change',sorting)
+document.getElementById('select').addEventListener('change',sortingbypopulation)
+document.getElementById('select2').addEventListener('change',sortingbyrank)
+
 let fetchedData;
 
 async function fetchData(){
@@ -36,7 +38,8 @@ function display_data_on_ui(data){
    })
 }
 
-function sorting(e){
+function sortingbypopulation(e){
+
     let data=[...fetchedData];
 
     if(e.target.value=='low-to-high'){
@@ -48,4 +51,16 @@ function sorting(e){
     }else{
      display_data_on_ui(fetchedData)
     }
+}
+
+function sortingbyrank(e){
+  let data=[...fetchedData]
+
+if(e.target.value=='high-to-low-rank'){
+ let sorted= data.sort((a,b)=>b.Rank-a.Rank)
+ display_data_on_ui(sorted)
+}else{
+  let sorted= data.sort((a,b)=>a.Rank-b.Rank);
+  display_data_on_ui(sorted)
+}
 }

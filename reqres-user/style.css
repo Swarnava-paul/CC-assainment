@@ -1,0 +1,18 @@
+#userdataholder{
+    margin-top: 15px;
+   display: grid;
+   justify-content: center;
+   grid-template-columns: repeat(3,20%);
+   column-gap: 25px;
+   row-gap: 25px;
+}
+#userdataholder div{
+    height: auto;
+    border: 1px solid #000;
+    display: grid;
+    place-items: center;
+    row-gap: 5px;
+}
+#userdataholder div img{
+    width: 80%;
+}

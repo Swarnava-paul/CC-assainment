@@ -15,17 +15,20 @@ async function fetchData(){
     }
 }
 fetchData()
+function c(tag){
+  return document.createElement(tag)
+}// for creating shorthand elements
 
 function display_data_on_ui(data){
  let container = document.getElementById('container');
  container.innerHTML="";
 
  data.map(function(i){
-    let div= document.createElement('div');
-    let countryName= document.createElement('p');
-    let id= document.createElement('p');
-    let population = document.createElement('p');
-    let rank = document.createElement('p');
+    let div=c('div');
+    let countryName= c('p');
+    let id= c('p');
+    let population = c('p');
+    let rank = c('p');
 
     countryName.innerHTML=i.country;
     id.innerHTML=i.id;

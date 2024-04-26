@@ -1,0 +1,16 @@
+#buttonholder{
+    width: 20%;
+    margin: auto;
+    margin-top: 12px;
+}
+#container{
+    margin-top: 20px;
+    display: grid;
+    row-gap: 21px;
+}
+#container div{
+    box-shadow: 0px 1px 7px 1px;
+  padding: 10px;
+  border-radius: 12px;
+    
+}

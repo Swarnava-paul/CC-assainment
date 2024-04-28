@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management system</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div style="margin: auto;display: flex;justify-content: center;margin-top: 12px;">
+        <h1>Employee Management System</h1>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top:12px;">
+        <label for="filter-by-department">Filter By Department :</label>
+        <select  id="filter-by-department">
+            <option >select Department</option>
+            <option value="engineering">Engineering</option>
+            <option value="marketing">Marketing</option>
+            <option value="operations">Operation</option>
+            <option value="finance">Finance</option>
+        </select>
+
+        <label for="filter-by-gender">Filter by Gender :</label>
+        <select  id="filter-by-gender">
+            <option>select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="others">others</option>
+        </select>
+        <label for="sort-by-salary">Sort By Salary :</label>
+        <select  id="sort-by-salary">
+            <option>Select order</option>
+            <option value="high-to-low">High to Low</option>
+            <option value="low-to-high">Low to High</option>
+        </select>
+    </div>
+
+    <div id="container">
+        <table style="width: 80%;">
+            <thead id="table">
+                <tr>
+                    <td>s.no</td>
+                    <td>Name</td>
+                    <td>Gender</td>
+                    <td>Department</td>
+                    <td>Salary</td>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
+</body>
+</html>
+<script src="./index.js">
+    
+</script>

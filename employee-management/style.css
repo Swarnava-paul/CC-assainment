@@ -1,0 +1,17 @@
+*{
+    margin:0;
+}
+#container{
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+}
+table{
+    border: 1px solid #000;
+}
+thead{
+    background-color: whitesmoke;
+}
+td{
+    border: 1px solid #000;
+}

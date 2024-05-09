@@ -13,31 +13,54 @@
   <script type="text/babel">
     // Your ItemList component code will go here
     function App(){
-     
-        const list=["Apple", "Banana", "Cherry"];
+        const[filter,setFilter]=React.useState()
+        const[list,setList]=React.useState(["Apple", "Banana", "Cherry"]);
+
+
+     React.useEffect(()=>{
+        let filtered= list.filter(i=>(
+    i!==filter
+))
+setList(filtered)
+     },[filter])
+
 
         return(
-            <ItemList list={list}/>
+            <ul>
+            {
+             
+                list.map((i,index)=>(
+                    <ItemList key={index} item={i} filter={filter} setFilter={setFilter}/>
+                ))
+              
+            }
+            </ul>
         )
     }
 
-    const ItemList=(items)=>{
+    const ItemList=({item,filter,setFilter})=>{
 
-        return(
-         (items.list.length!==0?(
-            
-            <ul>
-                {
-                    items.list.map((element,index)=>(
-                        <li style={{fontSize:"20px"}}>{element}</li>
-                    ))
-                }
-            </ul>
-         ):(
-            <h1>No items found</h1>
-         ))
-    
-        )
+        const[display,setDisplay]=React.useState('hide')
+     return(
+    <>
+    {
+      (display=='hide'?(
+        <div style={{display:'flex'}}>
+          <input type="checkbox" onClick={()=>{setDisplay('on')}}/>
+          <p>{item}</p>
+        </div>
+      ):(
+        <div style={{display:'flex',gap:'5px',alignItems:'center'}}>
+        <p>{item}</p>
+        <button style={{height:'5vh'}} onClick={()=>{
+          setFilter(item)
+        }}>Remove</button>
+        </div>
+      ))
+    }
+    </>
+)
+
     }
 
     let root=ReactDOM.createRoot(document.getElementById('root'));

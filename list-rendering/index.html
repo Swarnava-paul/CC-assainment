@@ -13,51 +13,37 @@
   <script type="text/babel">
     // Your ItemList component code will go here
     function App(){
-        const[filter,setFilter]=React.useState()
+
         const[list,setList]=React.useState(["Apple", "Banana", "Cherry"]);
 
 
-     React.useEffect(()=>{
-        let filtered= list.filter(i=>(
-    i!==filter
-))
-setList(filtered)
-     },[filter])
-
 
         return(
-            <ul>
+          <>
+          {
+            (list.length!==0?(
+              <ul>
             {
              
                 list.map((i,index)=>(
-                    <ItemList key={index} item={i} filter={filter} setFilter={setFilter}/>
+                    <ItemList key={index}  item={i}/>
                 ))
               
             }
             </ul>
+            ):(
+            <h1>Item is not available</h1>
+            ))
+          }
+          </>
         )
     }
 
-    const ItemList=({item,filter,setFilter})=>{
+    const ItemList=({item})=>{
 
-        const[display,setDisplay]=React.useState('hide')
      return(
     <>
-    {
-      (display=='hide'?(
-        <div style={{display:'flex'}}>
-          <input type="checkbox" onClick={()=>{setDisplay('on')}}/>
-          <p>{item}</p>
-        </div>
-      ):(
-        <div style={{display:'flex',gap:'5px',alignItems:'center'}}>
-        <p>{item}</p>
-        <button style={{height:'5vh'}} onClick={()=>{
-          setFilter(item)
-        }}>Remove</button>
-        </div>
-      ))
-    }
+     <li>{item}</li>
     </>
 )
 

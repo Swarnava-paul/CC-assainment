@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+    <style>
+        #inputholder{
+            margin: auto;
+            display: grid;
+            place-items: center;
+          width: 100%;
+          row-gap: 10px;
+          
+        }
+        #inputholder input{
+            height:7vh;
+            width: 40%;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+function App(){
+
+    const[hobies,setHobies]=React.useState([]);
+    const[inputCount,setInputCount]=React.useState(['input'])
+console.log(hobies);
+    return(
+        <>
+        <button onClick={()=>{
+            let inputs=[...inputCount];
+            inputs.push('input');
+            setInputCount(inputs)
+        }}>Add input fields</button>
+        <div id='inputholder'>
+         {
+            inputCount.map((i,index)=>(
+                <Inputs key={index} setHobies={setHobies} hobies={hobies}/>
+            ))
+         }
+        </div>
+        </>
+    )
+}
+const Inputs=({setHobies,hobies})=>{
+
+    const[visibleinput,setVisibleInput]=React.useState('visible')
+    const[trackInputChange,setTrackInputChange]=React.useState('')
+    return(
+       
+         (visibleinput=='visible'?(
+        <div style={{display:"flex"}}>
+        <input type="text" onChange={(e)=>{
+            setTrackInputChange(e.target.value)
+        }}/>
+        <button onClick={()=>{
+            let existinghobies=[...hobies];
+            existinghobies.push(trackInputChange)
+            setHobies(existinghobies)
+        }}>add hoby</button>
+        <button onClick={()=>{setVisibleInput('hideinput')}}>delete this input</button>
+        </div>
+         ):(''))
+       
+    )
+}
+
+let root=ReactDOM.createRoot(document.getElementById('root'))
+root.render(<App/>)
+</script>
+</html>

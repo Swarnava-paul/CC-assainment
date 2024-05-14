@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+    <style>
+        #inputfield{
+            display: flex;
+            justify-content: center;
+        }#inputfield input{
+            width: 50%;
+            height: 7vh;
+            font-size: 20px;
+        }
+        #colorshoecase{
+            margin: auto;
+            height: 50vh;
+            width: 30%;
+            margin-top: 3%;
+            border: 1px solid #000;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    
+    function App(){
+
+        const[color,setColor]=React.useState('')
+        return(
+            <>
+        <div id="inputfield">
+         <input type="text"  name="" id="" placeholder='Enter Color name or Rgb value' onChange={(event)=>{setColor(event.target.value)}}/>
+        </div>
+        <Color_field color={color}/>
+        </>
+        )
+    }
+
+    const Color_field=({color})=>{
+
+
+        return(
+            <>
+            <div id="colorshoecase" style={{backgroundColor:`${color}`}}></div>
+            </>
+        )
+
+    }
+
+    let root=ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App/>)
+
+  </script>
+</html>

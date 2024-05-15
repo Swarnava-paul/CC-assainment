@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+    function App(){
+
+        const[quiz,setQuiz]=React.useState([
+            {
+                question:'What is React',
+                choice1:'A Game',
+                choice2:"A Computer",
+                choice3:"A open source Javascript UI Frame work"
+            },
+            {
+                question:'What is Virtual DOM',
+                choice1:'A Programming Language',
+                choice2:"A Virtual Stadium",
+                choice3:"A copy of Real Dom but Lightweight"
+            },
+            {
+                question:'What is useReducer',
+                choice1:'A React Hook that manages state with very clear approach',
+                choice2:"A object",
+                choice3:"A Data structure"
+            },
+        ])
+        const[statusOfQuiz,setStatusOfQuiz]=React.useState('notCompleted')
+        const[answers,setAnswers]=React.useState([]) 
+        const[correctAnswers,setCorrectAnswers]=React.useState([
+            'A open source Javascript UI Frame work',
+            'A copy of Real Dom but Lightweight',
+            'A React Hook that manages state with very clear approach'
+        ])
+        const[marks,setMarks]=React.useState(0)
+
+        return(
+            <>
+            {
+              (statusOfQuiz=='notCompleted'?(
+
+                <>
+                {quiz.map((i,index)=>(
+                    <Quiz_question i={i} index={index} answers={answers} setAnswers={setAnswers}/>
+                ))
+                }
+                <button onClick={()=>{
+                    let marks=0
+                    let array=[...answers]
+                    let correct_answers=[...correctAnswers]
+                    let sortedarray=array.sort((a,b)=>a.className-b.className)
+                    
+                     sortedarray.forEach((item,index)=>{
+                        if(item.answer===correct_answers[index]){
+                            marks+=1;
+                        }
+                     })
+                    setMarks(marks)
+                setStatusOfQuiz('completed')
+               
+             
+                    
+                }}>Submit Quiz</button>
+                </>
+
+              ):(
+                 <>
+                <h1>Quiz Submitted successfully marks :{marks}</h1>
+                 <button onClick={()=>{setStatusOfQuiz('notCompleted')}}>Re start Quiz</button>
+                 </>
+              ))
+            }
+            </>
+        )
+    }
+
+    const Quiz_question=({i,index,answers,setAnswers})=>{
+
+        return(
+            <div style={{display:"grid",rowGap:"10px",marginLeft:"30px"}}>
+            <h2>{index+1}.{i.question}</h2>
+              <form onChange={(e)=>{
+                let array=[...answers]
+                let filtered=array.filter(i=>(
+                    i.className==e.target.className
+                ))
+                    
+                if(filtered.length>0){
+                    filtered[0].answer=e.target.value;
+                    setAnswers(array)
+                }
+                else{
+                    array.push({className:e.target.className,answer:e.target.value})
+                    setAnswers(array)
+                }
+                
+              }}>
+              
+                    <input type="radio" className={index} name={i.question} value={i.choice1}/>{i.choice1}
+
+                      <br/> <br/>
+                    <input type="radio" className={index} name={i.question} value={i.choice2}/>{i.choice2}
+                       <br/> <br/>
+             
+                    <input type="radio" className={index} name={i.question} value={i.choice3}/>{i.choice3}
+            </form>
+            </div>
+        )
+    }
+
+    
+    let root=ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+  </script>
+</html>
